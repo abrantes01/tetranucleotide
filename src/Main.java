@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.net.*;
 
 import org.jgrapht.*;
@@ -5,7 +6,7 @@ import org.jgrapht.graph.*;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		
         UndirectedGraph<String, DefaultEdge> stringGraph = createStringGraph();
 
@@ -16,7 +17,8 @@ public class Main {
         DirectedGraph<URL, DefaultEdge> hrefGraph = createHrefGraph();
 
         // note directed edges are printed as: (<v1>,<v2>)
-        System.out.println(hrefGraph.toString());   
+        System.out.println(hrefGraph.toString());
+        Combi.S256();
 	}
 	
 	   /**
