@@ -5,3 +5,12 @@
 
 
 Si y'a une boucle sur le graphe, alors le code n'est pas circulaire.
+
+
+# Import du projet
+En cas d'erreur de path :
+- clic droit sur le projet => Build path => Configure path
+- Add Jars, sélectionner tous les JARs du dossier lib
+- Apply => OK
+
+Le problème devrait être réglé.
