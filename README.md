@@ -8,6 +8,10 @@ Si y'a une boucle sur le graphe, alors le code n'est pas circulaire.
 
 
 # Import du projet
+- Cloner le git repo dans le workspace
+- Lancer Eclipse, file => import => general => existing project in workspace
+- OK
+
 En cas d'erreur de path :
 - clic droit sur le projet => Build path => Configure path
 - Add Jars, sélectionner tous les JARs du dossier lib
