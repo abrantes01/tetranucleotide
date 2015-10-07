@@ -6,6 +6,7 @@
 
 Si y'a une boucle sur le graphe, alors le code n'est pas circulaire.
 
+<<<<<<< Updated upstream
 
 # Import du projet
 - Cloner le git repo dans le workspace
@@ -18,3 +19,7 @@ En cas d'erreur de path :
 - Apply => OK
 
 Le problème devrait être réglé.
+=======
+## Génération des 256 combinaisons
+En executant le programme, un fichier texte est généré à la racine contenant les 256 combinaisons.
+>>>>>>> Stashed changes
