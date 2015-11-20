@@ -25,6 +25,7 @@ public class Main {
 			Combi.S12();
 			Combi.S228();
 			Combi.S114();
+			Combi.S126();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

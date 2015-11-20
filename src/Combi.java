@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.paukov.combinatorics.Factory;
@@ -179,6 +180,54 @@ public static void S228() throws FileNotFoundException {
 	    	  }
 	      }
 	      for (String tetra : l114) {
+	    	  writer.println(tetra);
+	      }
+	      writer.close();
+	}
+	
+	public static void S126() throws FileNotFoundException {
+		  List<String> l126 = new ArrayList<String>();
+		  PrintWriter writer = new PrintWriter("S126.txt");
+		  FileReader input;
+		  FileReader input2;
+			try {
+				input = new FileReader("S114.txt");
+			} 
+			catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				input = null;
+				e.printStackTrace();
+			}
+	      BufferedReader bufRead = new BufferedReader(input);
+	      String myLine = null;
+	      try {
+				while ((myLine = bufRead.readLine()) != null) {
+					l126.add(myLine);
+				}
+	      }
+	      catch (IOException e) {
+				e.printStackTrace();
+			}
+	      
+	      try {
+				input2 = new FileReader("S12.txt");
+			} 
+			catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				input2 = null;
+				e.printStackTrace();
+			}
+	      bufRead = new BufferedReader(input2);
+	      try {
+				while ((myLine = bufRead.readLine()) != null) {
+					l126.add(myLine);
+				}
+	      }
+	      catch (IOException e) {
+				e.printStackTrace();
+			}
+	      Collections.sort(l126);
+	      for (String tetra : l126) {
 	    	  writer.println(tetra);
 	      }
 	      writer.close();
