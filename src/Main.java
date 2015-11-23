@@ -4,8 +4,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.*;
 import java.util.Arrays;
+
+import javax.swing.JFrame;
+
+import org.jgraph.JGraph;
 import org.jgrapht.*;
 import org.jgrapht.alg.CycleDetector;
+import org.jgrapht.ext.JGraphModelAdapter;
 import org.jgrapht.graph.*;
 
 public class Main {
@@ -32,8 +37,22 @@ public class Main {
 		}
 
         System.out.println(hrefGraph.toString());  
+        //visualization(hrefGraph);
         //System.out.println(complementary("AACT"));
         //System.out.println(Functions.isAutocomplementary("AACT"));
+	}
+	
+	public static void visualization(DirectedGraph<String, DefaultEdge> g){
+		JGraphModelAdapter jgraphModelAdapt = new JGraphModelAdapter(g);
+		JGraph graph = new JGraph(jgraphModelAdapt);
+		JFrame frame = new JFrame();
+	    frame.getContentPane().add(graph);
+	    frame.setTitle("JGraphT Adapter to JGraph Demo");
+	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    frame.pack();
+	    frame.setVisible(true);
+		
+		
 	}
 
 }
