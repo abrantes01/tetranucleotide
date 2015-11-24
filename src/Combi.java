@@ -29,7 +29,7 @@ public class Combi {
     	for (String str : perm) {
     		res = res + str;
     	}
-    	System.out.println( res );
+    	//System.out.println( res );
     	writer.println(res);
     }
     writer.close();
