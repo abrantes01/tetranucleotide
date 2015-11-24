@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
@@ -15,7 +16,10 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.MutableTreeNode;
 
 
+
 public class Functions {
+	
+	public static BigInteger COMPTEUR_GLOBAL = new BigInteger("0");
 	/**
      * Creates a toy directed graph based on URL objects that represents link
      * structure.
@@ -162,6 +166,47 @@ public class Functions {
 			e.printStackTrace();
 		}
 		return array;
+	}
+	public static boolean isValid(String s) {
+		return false;
+	}
+	/*public static int compteur (DefaultMutableTreeNode arbre, int l) {//au début arbre est vide et res =0
+		//si le noeud ne va pas, on arrête dans cette branche
+		if (!(isCyclic(arbre.toString()))||!(isAutocomplementary(arbre.toString()))) {
+			return 0;
+		}
+		else {
+			if (l==0) { //sinon, si on est à une feuille qui marche, +1
+				return 1;
+			}
+			else { //si on est à un noeud pas feuille qui marche, on crée ses fils
+				return compteur_aux(arbre,l);
+			}
+		}
+	}
+	public static void compteur_aux(DefaultMutableTreeNode arbre, int l) {
+		for (int i=0; i<126; i++) {
+			DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+','+i);
+			arbre.add(node);
+			compteur(node, l-1);
+		}
+	}*/
+	
+	public static void compteur(DefaultMutableTreeNode arbre, int l) {
+		if (l==0) {
+			if(isValid(arbre.toString())) {
+				COMPTEUR_GLOBAL.add(BigInteger.ONE);
+			}
+		}
+		else {
+			for (int i=0; i<126; i++) {
+				if(isValid(arbre.toString()+','+i)) {
+					DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+','+i);
+					arbre.add(node);
+					compteur(node, l-1);
+				}
+			}
+		}
 	}
 
 	public static DefaultMutableTreeNode remplir(DefaultMutableTreeNode root, int l){
