@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.function.Function;
@@ -35,7 +36,7 @@ public class Main {
 			Combi.S114();
 			Combi.S126();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch bloc   k
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -43,9 +44,14 @@ public class Main {
 
         //Functions.getL1("S12.txt");
         //Functions.createTree("S126.txt");
-        DefaultMutableTreeNode arbre = Functions.remplir(new DefaultMutableTreeNode(),2);
+        //DefaultMutableTreeNode arbre = Functions.remplir(new DefaultMutableTreeNode(),3);
+        ArrayList<String> array = Functions.arrayTetra126();
+        for(int i = 0 ; i < array.size() ; i++)
+        {
+            System.out.println(i+" : "+array.get(i));
+        }
         //System.out.println(arbre.getDepth());
-        Functions.parcourir(arbre);
+        //Functions.parcourir(arbre);
 
         //visualization(hrefGraph);
         //System.out.println(complementary("AACT"));
