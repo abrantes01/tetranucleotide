@@ -2,11 +2,16 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Enumeration;
 
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.alg.CycleDetector;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
+
+import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.MutableTreeNode;
 
 
 public class Functions {
@@ -83,26 +88,155 @@ public class Functions {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-  
-       /* String v1 = "v1";
-        String v2 = "v2";
-        String v3 = "v3";
-        String v4 = "v4";
-
-        // add the vertices
-        g.addVertex(v1);
-        g.addVertex(v2);
-        g.addVertex(v3);
-        g.addVertex(v4);
-
-        // add edges to create a circuit
-        g.addEdge(v1, v2);
-        g.addEdge(v2, v3);
-        g.addEdge(v3, v4);
-        g.addEdge(v4, v1);
-*/
         return g;
     }
+
+	public static void getL1(String fichier){
+		FileReader input;
+		try{
+			input = new FileReader(fichier);
+		}
+		catch (FileNotFoundException e){
+			System.out.println("Error while opening file");
+			input = null;
+		}
+
+		BufferedReader bufRead = new BufferedReader(input);
+		String myLine = null;
+
+		int res = 0;
+
+		try {
+			while ((myLine = bufRead.readLine()) != null) {
+				DirectedGraph<String, DefaultEdge> g =
+						new DefaultDirectedGraph<String, DefaultEdge>(DefaultEdge.class);
+				String s1 = new String();
+				String s2 = new String();
+
+				for (int i=1;i<4;i++) {
+					s1 = myLine.substring(0,i);
+					s2 = myLine.substring(i,4);
+					g.addVertex(s1);
+					g.addVertex(s2);
+					g.addEdge(s1,s2);
+				}
+
+				if(isAutocomplementary(myLine) && !isCyclic(g)){
+					res++;
+				}
+
+				System.out.println(myLine+ " ---> " +g);
+				//System.out.println(g);
+			}
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		System.out.println("Resultat : " + res);
+
+	}
+
+	public static DefaultMutableTreeNode remplir(DefaultMutableTreeNode root, int l){
+		if (l == 0) return root;
+		else {
+			root = remplir_aux(root,l);
+		}
+		return root;
+	}
+
+	public static DefaultMutableTreeNode remplir_aux(DefaultMutableTreeNode root, int l){
+		FileReader input;
+		try{
+			input = new FileReader("S126.txt");
+		}
+		catch (FileNotFoundException e){
+			System.out.println("Error while opening file");
+			input = null;
+		}
+
+		BufferedReader bufRead = new BufferedReader(input);
+		String myLine = null;
+
+		try {
+			while ((myLine = bufRead.readLine()) != null) {
+				DefaultMutableTreeNode node = new DefaultMutableTreeNode(myLine);
+				root.add(node);
+			}
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		for (Enumeration e = root.children(); e.hasMoreElements();){
+			remplir((DefaultMutableTreeNode) e.nextElement(),l-1);
+		}
+		return root;
+
+	}
+
+	public static void parcourir(MutableTreeNode parent) {
+		int childNumber = parent.getChildCount();
+		for (int i = 0 ; i < childNumber ; i++) {
+			MutableTreeNode child = (MutableTreeNode) parent.getChildAt(i);
+			System.out.println(child.getChildCount());
+			parcourir(child);
+		}
+	}
+
+
+	public static int compte(MutableTreeNode a){
+		if (a == null) return 0;
+		else {
+			//if (a.)
+		}
+		return 0;
+	}
+
+
+	public static void createTree(String fichier){
+		JTree tree;
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
+
+
+		FileReader input;
+		try{
+			input = new FileReader(fichier);
+		}
+		catch (FileNotFoundException e){
+			System.out.println("Error while opening file");
+			input = null;
+		}
+
+		BufferedReader bufRead = new BufferedReader(input);
+		String myLine = null;
+
+		int res = 0;
+
+		try {
+			while ((myLine = bufRead.readLine()) != null) {
+				DefaultMutableTreeNode node = new DefaultMutableTreeNode(myLine);
+				root.add(node);
+			}
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		tree = new JTree(root);
+
+		//Enumeration e = root.children();
+
+		for (Enumeration e = root.children(); e.hasMoreElements();)
+			System.out.println(e.nextElement());
+
+		//System.out.println(tree.toString());
+
+
+	}
     
     public static boolean isCyclic(DirectedGraph<String, DefaultEdge> g) {
     	
@@ -135,7 +269,7 @@ public class Functions {
     	
     	return res.toString();
     }
-    
+
     public static boolean isAutocomplementary(String tetra) {
     	return complementary(tetra).equals(tetra);
     }

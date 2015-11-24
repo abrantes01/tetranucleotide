@@ -4,8 +4,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.*;
 import java.util.Arrays;
+import java.util.Enumeration;
+import java.util.function.Function;
 
 import javax.swing.JFrame;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import org.jgraph.JGraph;
 import org.jgrapht.*;
@@ -19,7 +22,7 @@ public class Main {
 		
 		 //String code = "{AATG,AGTT,GTGT,GTTT}";
         DirectedGraph<String, DefaultEdge> hrefGraph = Functions.createHrefGraph("test.txt");
-        System.out.println(Functions.isCyclic(hrefGraph));
+        //System.out.println(Functions.isCyclic(hrefGraph));
         
          //code pour générer les fichiers textes
           
@@ -32,11 +35,18 @@ public class Main {
 			Combi.S114();
 			Combi.S126();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			// TODO Auto-generated catch bloc   k
 			e.printStackTrace();
 		}
 
-        System.out.println(hrefGraph.toString());  
+        //System.out.println(hrefGraph.toString());
+
+        //Functions.getL1("S12.txt");
+        //Functions.createTree("S126.txt");
+        DefaultMutableTreeNode arbre = Functions.remplir(new DefaultMutableTreeNode(),2);
+        //System.out.println(arbre.getDepth());
+        Functions.parcourir(arbre);
+
         //visualization(hrefGraph);
         //System.out.println(complementary("AACT"));
         //System.out.println(Functions.isAutocomplementary("AACT"));

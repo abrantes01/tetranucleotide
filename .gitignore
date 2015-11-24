@@ -4,6 +4,7 @@
 /build/
 /bin/
 target/
+/.idea/
 
 # OS Files #
 .DS_Store
@@ -70,3 +71,6 @@ local.properties
 
 # PDT-specific
 .buildpath
+
+*.iml
+
