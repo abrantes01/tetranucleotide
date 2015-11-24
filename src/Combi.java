@@ -226,6 +226,7 @@ public static void S228() throws FileNotFoundException {
 	      catch (IOException e) {
 				e.printStackTrace();
 			}
+	      //on trie la liste par ordre lexicographique
 	      Collections.sort(l126);
 	      for (String tetra : l126) {
 	    	  writer.println(tetra);
