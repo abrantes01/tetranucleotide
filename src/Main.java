@@ -6,7 +6,7 @@ import java.net.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
-import java.util.function.Function;
+//import java.util.function.Function;
 
 import javax.swing.JFrame;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -50,8 +50,8 @@ public class Main {
         {
             //System.out.println(i+" : "+array.get(i));
         }
-
-        Functions.compteur(new DefaultMutableTreeNode(),3,array);
+        
+        Functions.compteur(new DefaultMutableTreeNode(),2,array);
         System.out.println(Functions.COMPTEUR_GLOBAL);
         //DirectedGraph<String, DefaultEdge> g = Functions.createGraph("1,125,37,2,9,45,120", array);
         //System.out.println(g.toString());

@@ -197,13 +197,25 @@ public class Functions {
 		if (l==0) {
 			if(isValid(arbre.toString(),conversion)) {
 				COMPTEUR_GLOBAL = COMPTEUR_GLOBAL.add(BigInteger.ONE);
-				//System.out.println("UN DANS LE IF");
+				String[] indexesTab = arbre.toString().split(",");
+				ArrayList<String> tetraList = new ArrayList<String>();
+				for(String s : indexesTab){
+					System.out.print(conversion.get(Integer.parseInt(s))+' ');
+				}
+				System.out.println();
 			}
 		}
 		else {
 			for (int i=0; i<126; i++) {
-				if(isValid(arbre.toString()+i+',',conversion)) {
-					DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+i+',');
+				String virgule = new String();
+				if (l==1) {
+					virgule = "";
+				}
+				else {
+					virgule=",";
+				}
+				if(isValid(arbre.toString()+i+virgule,conversion)) {
+					DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+i+virgule);
 					arbre.add(node);
 					compteur(node, l-1,conversion);
 					//System.out.println("UN DANS LE ELSE");
@@ -336,7 +348,7 @@ public class Functions {
 				g.addVertex(s2);
 				g.addEdge(s1,s2);
 			}
-			System.out.println(conversion.get(Integer.parseInt(s)));
+			//System.out.println(conversion.get(Integer.parseInt(s)));
 			//System.out.println(s);
 		}
 		return g;
@@ -344,7 +356,7 @@ public class Functions {
 
 
 	public static boolean isValid(String indexes, ArrayList<String> conversion){
-		System.out.println("Appel isValid :" + indexes );
+		//System.out.println("Appel isValid :" + indexes );
 		boolean res = true;
 		if (indexes.equals("")){
 			System.out.println("Salut");
@@ -358,18 +370,22 @@ public class Functions {
 			ArrayList<String> tetraList = new ArrayList<String>();
 			for(String s : indexesTab){
 				tetraList.add(conversion.get(Integer.parseInt(s)));
-			}
+			}/*
 			ArrayList<String> tetraListComp = new ArrayList<String>();
 
 			for(String ts : tetraList){
 				tetraListComp.add(complementary(ts));
 			}
-			if(!tetraList.containsAll(tetraListComp)) res = false;
+			if(!tetraList.containsAll(tetraListComp)) res = false;*/
+			for(int i = 0; i < tetraList.size() && res;i++){
+	            String tetranucleotide = tetraList.get(i);
+	            res = tetraList.contains(complementary(tetranucleotide));
+	        }
 		}
 
 		return res;
 	}
-    
+
     public static String complementary(String tetra) {
     	StringBuilder res = new StringBuilder( "AAAA");
     	if (tetra.length()!=4){
