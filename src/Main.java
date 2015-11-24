@@ -48,8 +48,13 @@ public class Main {
         ArrayList<String> array = Functions.arrayTetra126();
         for(int i = 0 ; i < array.size() ; i++)
         {
-            System.out.println(i+" : "+array.get(i));
+            //System.out.println(i+" : "+array.get(i));
         }
+
+        Functions.compteur(new DefaultMutableTreeNode(),3,array);
+        System.out.println(Functions.COMPTEUR_GLOBAL);
+        //DirectedGraph<String, DefaultEdge> g = Functions.createGraph("1,125,37,2,9,45,120", array);
+        //System.out.println(g.toString());
         //System.out.println(arbre.getDepth());
         //Functions.parcourir(arbre);
 

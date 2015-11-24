@@ -167,6 +167,7 @@ public class Functions {
 		}
 		return array;
 	}
+
 	public static boolean isValid(String s) {
 		return false;
 	}
@@ -192,18 +193,20 @@ public class Functions {
 		}
 	}*/
 	
-	public static void compteur(DefaultMutableTreeNode arbre, int l) {
+	public static void compteur(DefaultMutableTreeNode arbre, int l, ArrayList<String> conversion) {
 		if (l==0) {
-			if(isValid(arbre.toString())) {
-				COMPTEUR_GLOBAL.add(BigInteger.ONE);
+			if(isValid(arbre.toString(),conversion)) {
+				COMPTEUR_GLOBAL = COMPTEUR_GLOBAL.add(BigInteger.ONE);
+				//System.out.println("UN DANS LE IF");
 			}
 		}
 		else {
 			for (int i=0; i<126; i++) {
-				if(isValid(arbre.toString()+','+i)) {
-					DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+','+i);
+				if(isValid(arbre.toString()+i+',',conversion)) {
+					DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+i+',');
 					arbre.add(node);
-					compteur(node, l-1);
+					compteur(node, l-1,conversion);
+					//System.out.println("UN DANS LE ELSE");
 				}
 			}
 		}
@@ -316,6 +319,56 @@ public class Functions {
     	CycleDetector cd = new CycleDetector(g);
     	return cd.detectCycles();
     }
+
+	public static DirectedGraph<String,DefaultEdge> createGraph (String indexes, ArrayList<String> conversion){
+		DirectedGraph<String, DefaultEdge> g =
+				new DefaultDirectedGraph<String, DefaultEdge>(DefaultEdge.class);
+		String[] indexesTab = indexes.split(",");
+		for (String s: indexesTab) {
+			String tetraString = conversion.get(Integer.parseInt(s));
+			String s1 = new String();
+			String s2 = new String();
+
+			for (int i=1;i<4;i++) {
+				s1 = tetraString.substring(0,i);
+				s2 = tetraString.substring(i,4);
+				g.addVertex(s1);
+				g.addVertex(s2);
+				g.addEdge(s1,s2);
+			}
+			System.out.println(conversion.get(Integer.parseInt(s)));
+			//System.out.println(s);
+		}
+		return g;
+	}
+
+
+	public static boolean isValid(String indexes, ArrayList<String> conversion){
+		System.out.println("Appel isValid :" + indexes );
+		boolean res = true;
+		if (indexes.equals("")){
+			System.out.println("Salut");
+		}
+		if(isCyclic(createGraph(indexes,conversion))) {
+			//System.out.println("C'est cyclique");
+			res = false;
+		}
+		else{
+			String[] indexesTab = indexes.split(",");
+			ArrayList<String> tetraList = new ArrayList<String>();
+			for(String s : indexesTab){
+				tetraList.add(conversion.get(Integer.parseInt(s)));
+			}
+			ArrayList<String> tetraListComp = new ArrayList<String>();
+
+			for(String ts : tetraList){
+				tetraListComp.add(complementary(ts));
+			}
+			if(!tetraList.containsAll(tetraListComp)) res = false;
+		}
+
+		return res;
+	}
     
     public static String complementary(String tetra) {
     	StringBuilder res = new StringBuilder( "AAAA");
