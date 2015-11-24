@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import org.jgrapht.DirectedGraph;
@@ -136,6 +137,31 @@ public class Functions {
 
 		System.out.println("Resultat : " + res);
 
+	}
+
+	public static ArrayList<String> arrayTetra126(){
+		ArrayList<String> array = new ArrayList<>();
+
+		FileReader input;
+		try{
+			input = new FileReader("S126.txt");
+		}
+		catch (FileNotFoundException e){
+			System.out.println("Error while opening file");
+			input = null;
+		}
+		BufferedReader bufRead = new BufferedReader(input);
+		String myLine = null;
+		try {
+			while ((myLine = bufRead.readLine()) != null) {
+				array.add(myLine);
+			}
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return array;
 	}
 
 	public static DefaultMutableTreeNode remplir(DefaultMutableTreeNode root, int l){
