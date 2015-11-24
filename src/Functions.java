@@ -148,7 +148,7 @@ public class Functions {
 
 		FileReader input;
 		try{
-			input = new FileReader("S126.txt");
+			input = new FileReader("S256.txt");
 		}
 		catch (FileNotFoundException e){
 			System.out.println("Error while opening file");
@@ -197,16 +197,22 @@ public class Functions {
 		if (l==0) {
 			if(isValid(arbre.toString(),conversion)) {
 				COMPTEUR_GLOBAL = COMPTEUR_GLOBAL.add(BigInteger.ONE);
-				String[] indexesTab = arbre.toString().split(",");
+				/*String[] indexesTab = arbre.toString().split(",");
+				ArrayList<String> tetraList = new ArrayList<String>();
+				for(String s : indexesTab){
+					System.out.print(conversion.get(Integer.parseInt(s))+' ');
+				}
+				System.out.println();*/
+			}
+		}
+		else {
+			for (int i=0; i<256; i++) {
+				String[] indexesTab = (arbre.toString()+i).split(",");
 				ArrayList<String> tetraList = new ArrayList<String>();
 				for(String s : indexesTab){
 					System.out.print(conversion.get(Integer.parseInt(s))+' ');
 				}
 				System.out.println();
-			}
-		}
-		else {
-			for (int i=0; i<126; i++) {
 				String virgule = new String();
 				if (l==1) {
 					virgule = "";
@@ -214,7 +220,7 @@ public class Functions {
 				else {
 					virgule=",";
 				}
-				if(isValid(arbre.toString()+i+virgule,conversion)) {
+				if(!isCyclic(createGraph(arbre.toString()+i+virgule,conversion))) {
 					DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+i+virgule);
 					arbre.add(node);
 					compteur(node, l-1,conversion);
@@ -361,11 +367,11 @@ public class Functions {
 		if (indexes.equals("")){
 			System.out.println("Salut");
 		}
-		if(isCyclic(createGraph(indexes,conversion))) {
+		/*if(isCyclic(createGraph(indexes,conversion))) {
 			//System.out.println("C'est cyclique");
 			res = false;
-		}
-		else{
+		}*/
+		//else{
 			String[] indexesTab = indexes.split(",");
 			ArrayList<String> tetraList = new ArrayList<String>();
 			for(String s : indexesTab){
@@ -381,7 +387,7 @@ public class Functions {
 	            String tetranucleotide = tetraList.get(i);
 	            res = tetraList.contains(complementary(tetranucleotide));
 	        }
-		}
+		//}
 
 		return res;
 	}
