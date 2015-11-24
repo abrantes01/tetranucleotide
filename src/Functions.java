@@ -10,6 +10,7 @@ import org.jgrapht.DirectedGraph;
 import org.jgrapht.alg.CycleDetector;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.SimpleDirectedGraph;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -113,8 +114,8 @@ public class Functions {
 
 		try {
 			while ((myLine = bufRead.readLine()) != null) {
-				DirectedGraph<String, DefaultEdge> g =
-						new DefaultDirectedGraph<String, DefaultEdge>(DefaultEdge.class);
+				SimpleDirectedGraph<String, DefaultEdge> g =
+						new SimpleDirectedGraph<String, DefaultEdge>(DefaultEdge.class);
 				String s1 = new String();
 				String s2 = new String();
 
@@ -168,9 +169,7 @@ public class Functions {
 		return array;
 	}
 
-	public static boolean isValid(String s) {
-		return false;
-	}
+
 	/*public static int compteur (DefaultMutableTreeNode arbre, int l) {//au début arbre est vide et res =0
 		//si le noeud ne va pas, on arrête dans cette branche
 		if (!(isCyclic(arbre.toString()))||!(isAutocomplementary(arbre.toString()))) {
@@ -220,11 +219,16 @@ public class Functions {
 				else {
 					virgule=",";
 				}
-				if(!isCyclic(createGraph(arbre.toString()+i+virgule,conversion))) {
-					DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+i+virgule);
-					arbre.add(node);
-					compteur(node, l-1,conversion);
-					//System.out.println("UN DANS LE ELSE");
+				try{
+					if(!isCyclic(createGraph(arbre.toString()+i+virgule,conversion))) {
+						DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+i+virgule);
+						arbre.add(node);
+						compteur(node, l-1,conversion);
+						//System.out.println("UN DANS LE ELSE");
+					}
+				}
+				catch(Exception e){
+					System.out.println("Loops dedans putain");
 				}
 			}
 		}
@@ -330,7 +334,7 @@ public class Functions {
 
 	}
     
-    public static boolean isCyclic(DirectedGraph<String, DefaultEdge> g) {
+    public static boolean isCyclic(SimpleDirectedGraph<String, DefaultEdge> g) {
     	
     	//renvoie true s'il y a un cycle
     	
@@ -338,9 +342,9 @@ public class Functions {
     	return cd.detectCycles();
     }
 
-	public static DirectedGraph<String,DefaultEdge> createGraph (String indexes, ArrayList<String> conversion){
-		DirectedGraph<String, DefaultEdge> g =
-				new DefaultDirectedGraph<String, DefaultEdge>(DefaultEdge.class);
+	public static SimpleDirectedGraph<String,DefaultEdge> createGraph (String indexes, ArrayList<String> conversion){
+		SimpleDirectedGraph<String, DefaultEdge> g =
+				new SimpleDirectedGraph<String, DefaultEdge>(DefaultEdge.class);
 		String[] indexesTab = indexes.split(",");
 		for (String s: indexesTab) {
 			String tetraString = conversion.get(Integer.parseInt(s));
