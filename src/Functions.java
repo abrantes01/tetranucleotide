@@ -122,7 +122,7 @@ public class Functions {
 	}
 
 	public static ArrayList<String> arrayTetra126(){
-		ArrayList<String> array = new ArrayList<>();
+		ArrayList<String> array = new ArrayList<String>();
 
 		FileReader input;
 		try{

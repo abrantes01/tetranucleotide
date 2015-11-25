@@ -21,6 +21,16 @@ public class Main {
 
 	public static void main(String[] args) {
 		
+		
+		// Lauching user interface
+		//UIManager.setLookAndFeel(new MetalLookAndFeel()); // For MAC users
+		UI ui = new UI();
+		ui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ui.pack();
+		ui.setSize(500, 400);
+		ui.setVisible(true);
+		
+		
 		 //String code = "{AATG,AGTT,GTGT,GTTT}";
         DirectedGraph<String, DefaultEdge> hrefGraph = Functions.createHrefGraph("test.txt");
         //System.out.println(Functions.isCyclic(hrefGraph));
