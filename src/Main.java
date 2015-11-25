@@ -9,6 +9,9 @@ import java.util.Enumeration;
 //import java.util.function.Function;
 
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import org.jgraph.JGraph;
@@ -19,11 +22,11 @@ import org.jgrapht.graph.*;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UnsupportedLookAndFeelException {
 		
 		
 		// Lauching user interface
-		//UIManager.setLookAndFeel(new MetalLookAndFeel()); // For MAC users
+		UIManager.setLookAndFeel(new MetalLookAndFeel()); // For MAC users
 		UI ui = new UI();
 		ui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ui.pack();

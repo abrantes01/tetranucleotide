@@ -54,10 +54,11 @@ public class UI extends JFrame {
 		
 		panelCenter.setLayout(new BorderLayout(0, 0));
 		panelCenter.add(panelForm, BorderLayout.NORTH);
-		panelProgressBar.setBorder(new EmptyBorder(0, 10, 0, 10));
+		panelProgressBar.setBorder(new EmptyBorder(10, 10, 0, 10));
 
+		progressBar.setPreferredSize(new Dimension(0, 20));
 		
-		panelProgressBar.setLayout(new BorderLayout(0, 0));
+		panelProgressBar.setLayout(new BorderLayout(5, 0));
 		panelProgressBar.add(progressBar);
 		panelCenter.add(panelProgressBar);
 		panelBottom.setBorder(new EmptyBorder(10, 10, 0, 10));
