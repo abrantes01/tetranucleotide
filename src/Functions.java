@@ -28,30 +28,7 @@ public class Functions {
      * @return a graph based on URL objects.
      */
 	
-    /*private static DirectedGraph<URL, DefaultEdge> createHrefGraph()
-    {
-        DirectedGraph<URL, DefaultEdge> g =
-            new DefaultDirectedGraph<URL, DefaultEdge>(DefaultEdge.class);
-
-        try {
-            URL amazon = new URL("http://www.amazon.com");
-            URL yahoo = new URL("http://www.yahoo.com");
-            URL ebay = new URL("http://www.ebay.com");
-
-            // add the vertices
-            g.addVertex(amazon);
-            g.addVertex(yahoo);
-            g.addVertex(ebay);
-
-            // add edges to create linking structure
-            g.addEdge(yahoo, amazon);
-            g.addEdge(yahoo, ebay);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        return g;
-    }*/
+   
 
     /**
      * Create a toy graph based on String objects.
@@ -169,30 +146,9 @@ public class Functions {
 		return array;
 	}
 
-
-	/*public static int compteur (DefaultMutableTreeNode arbre, int l) {//au début arbre est vide et res =0
-		//si le noeud ne va pas, on arrête dans cette branche
-		if (!(isCyclic(arbre.toString()))||!(isAutocomplementary(arbre.toString()))) {
-			return 0;
-		}
-		else {
-			if (l==0) { //sinon, si on est à une feuille qui marche, +1
-				return 1;
-			}
-			else { //si on est à un noeud pas feuille qui marche, on crée ses fils
-				return compteur_aux(arbre,l);
-			}
-		}
-	}
-	public static void compteur_aux(DefaultMutableTreeNode arbre, int l) {
-		for (int i=0; i<126; i++) {
-			DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+','+i);
-			arbre.add(node);
-			compteur(node, l-1);
-		}
-	}*/
 	
 	public static void compteur(DefaultMutableTreeNode arbre, int l, ArrayList<String> conversion) {
+		int debut =0;
 		if (l==0) {
 			if(isValid(arbre.toString(),conversion)) {
 				COMPTEUR_GLOBAL = COMPTEUR_GLOBAL.add(BigInteger.ONE);
@@ -201,17 +157,25 @@ public class Functions {
 				for(String s : indexesTab){
 					System.out.print(conversion.get(Integer.parseInt(s))+' ');
 				}
-				System.out.println();*/
+				System.out.print(",");*/
 			}
 		}
 		else {
-			for (int i=0; i<256; i++) {
-				String[] indexesTab = (arbre.toString()+i).split(",");
+			String[] indexesTab = arbre.toString().split(",");
+			String tmp = indexesTab[indexesTab.length-1]; 
+			if (arbre.toString().equals("")) {
+				debut = 0;
+			}
+			else {
+				debut = Integer.parseInt(tmp);
+			}
+			for (int i=debut+1; i<256; i++) {
+				/*String[] indexesTab = (arbre.toString()+i).split(",");
 				ArrayList<String> tetraList = new ArrayList<String>();
 				for(String s : indexesTab){
 					System.out.print(conversion.get(Integer.parseInt(s))+' ');
 				}
-				System.out.println();
+				System.out.println();*/
 				String virgule = new String();
 				if (l==1) {
 					virgule = "";
@@ -228,7 +192,7 @@ public class Functions {
 					}
 				}
 				catch(Exception e){
-					System.out.println("Loops dedans putain");
+					//System.out.println("Loops dedans putain");
 				}
 			}
 		}
@@ -245,7 +209,7 @@ public class Functions {
 	public static DefaultMutableTreeNode remplir_aux(DefaultMutableTreeNode root, int l){
 		FileReader input;
 		try{
-			input = new FileReader("S126.txt");
+			input = new FileReader("S256.txt");
 		}
 		catch (FileNotFoundException e){
 			System.out.println("Error while opening file");
