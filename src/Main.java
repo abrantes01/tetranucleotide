@@ -40,7 +40,7 @@ public class Main {
         
          //code pour générer les fichiers textes
           
-         try {
+         /*try {
 			Combi.S16();
 			Combi.S256();
 			Combi.S240();
@@ -51,7 +51,7 @@ public class Main {
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 
         //System.out.println(hrefGraph.toString());
 
