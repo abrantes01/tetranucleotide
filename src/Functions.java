@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
 
 import org.jgrapht.DirectedGraph;
@@ -150,10 +151,13 @@ public class Functions {
 	public static void compteur(DefaultMutableTreeNode arbre, int l, ArrayList<String> conversion) {
 		int debut =0;
 		String virgule = new String();
+		String tmp = new String("");
+		int index=0;
+		
 		if (l==0) {
 			if(isValid(arbre.toString(),conversion)) {
 				COMPTEUR_GLOBAL = COMPTEUR_GLOBAL.add(BigInteger.ONE);
-				String[] indexesTab = arbre.toString().split(",");
+				/*String[] indexesTab = arbre.toString().split(",");
 				//System.out.print(arbre.toString()+" , ");
 				ArrayList<String> tetraList = new ArrayList<String>();
 				for(String s : indexesTab){
@@ -166,18 +170,22 @@ public class Functions {
 					
 					//System.out.print(s+' ');
 				}
-				System.out.print(",");
+				System.out.print(",");*/
 			}
 		}
 		else {
-			if (l==1) {
-				virgule = "";
+			//System.out.println(arbre.toString());
+			if (l!=1) {
+				virgule = ",";
 			}
-			else {
+			/*else {
 				virgule=",";
-			}
+			}*/
 			String[] indexesTab = arbre.toString().split(",");
-			String tmp = indexesTab[indexesTab.length-1]; 
+			
+			tmp = indexesTab[indexesTab.length-1]; 
+			
+			
 			//System.out.println(tmp);
 			if (arbre.toString().equals("")) {
 				debut = 0;
@@ -195,24 +203,30 @@ public class Functions {
 				
 				
 				try{
-					if(!isCyclic(createGraph(arbre.toString()+i+virgule,conversion))) {
-						DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+i+virgule);
-						arbre.add(node);
-						compteur(node, l-1,conversion);
-						//System.out.println("UN DANS LE ELSE");
-					}
+					//if (i!=Integer.parseInt(tmp)) {
+						if(!isCyclic(createGraph(arbre.toString()+i+virgule,conversion))) {
+							DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+i+virgule);
+							arbre.add(node);
+							compteur(node, l-1,conversion);
+							//System.out.println("UN DANS LE ELSE");
+						}
+					//}
 				}
 				catch(Exception e){
 					//System.out.println("Loops dedans putain");
 				}
 			}
-			if(!isAutocomplementary(conversion.get(Integer.parseInt(tmp)))) {
-				if(!isCyclic(createGraph(arbre.toString()+String.valueOf(0-Integer.parseInt(tmp))+virgule,conversion))) {
-					DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+String.valueOf(0-Integer.parseInt(tmp))+virgule);
-					arbre.add(node);
-					compteur(node, l-1, conversion);
+			//System.out.println(tmp.getClass().getName());
+			//System.out.println("a : "+arbre.toString());
+			//System.out.println("a: "+tmp);
+			if(arbre.toString().length()!=0) {
+				if(!isAutocomplementary(conversion.get(Integer.parseInt(tmp)))) {
+					if(!isCyclic(createGraph(arbre.toString()+String.valueOf(0-Integer.parseInt(tmp))+virgule,conversion))) {
+						DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+String.valueOf(0-Integer.parseInt(tmp))+virgule);
+						arbre.add(node);
+						compteur(node, l-1, conversion);
+					}
 				}
-			}
 			}
 		}
 	}
@@ -355,7 +369,7 @@ public class Functions {
 
 
 	public static boolean isValid(String indexes, ArrayList<String> conversion){
-		//System.out.println("Appel isValid :" + indexes );
+		//System.out.print("Appel isValid :" + indexes );
 		boolean res = true;
 		if (indexes.equals("")){
 			System.out.println("Salut");
@@ -365,7 +379,7 @@ public class Functions {
 			//System.out.println("C'est cyclique");
 			res = false;
 		}*/
-		//else{
+		else{
 		String[] indexesTab = indexes.split(",");
 		ArrayList<String> tetraList = new ArrayList<String>();
 		for(String s : indexesTab){
@@ -390,10 +404,11 @@ public class Functions {
 		for(int i = 0; i < tetraList.size() && res;i++){
 			String tetranucleotide = tetraList.get(i);
 	        res = tetraList.contains(complementary(tetranucleotide));
-	        //System.out.print(tetranucleotide+' ');
+	       // System.out.print(tetranucleotide+' ');
 	    }
-		//}
-		//System.out.print(res+" ");
+		
+		}
+		//System.out.print(" "+res+" ");
 		//System.out.print(" ; ");
 
 		return res;
