@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -19,6 +20,13 @@ import javax.swing.border.Border;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import java.awt.FlowLayout;
+import javax.swing.JTextPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.JCheckBox;
 
 public class UI extends JFrame {
 	
@@ -38,15 +46,28 @@ public class UI extends JFrame {
 	public JPanel panelBottom = new JPanel();
 	public JPanel panelForm = new JPanel();
 	public JPanel panelProgressBar = new JPanel();
+	public JPanel panelResults = new JPanel();
+	private final JCheckBox chckbxEnregistrerLesRsultats = new JCheckBox("Enregistrer les résultats (results.txt)");
+	
 	
 	public UI() {
 		Font f = labelTitle.getFont();
 		labelTitle.setFont(new Font(f.getName(), Font.PLAIN, 2*f.getSize()));
 		panelTop.setBorder(new EmptyBorder(10, 5, 5, 5));
 		
-		panelTop.setLayout(new BorderLayout(15, 15));
+		panelTop.setLayout(new BorderLayout(0, 5));
 		panelTop.add(labelTitle, BorderLayout.NORTH);
-		panelTop.add(labelAuthors, BorderLayout.CENTER);
+		
+		
+		JPanel panelSubTitle = new JPanel();
+		panelSubTitle.setLayout(new BorderLayout(0, 15));
+		panelSubTitle.add(labelAuthors, BorderLayout.NORTH);
+		
+		
+		panelTop.add(panelSubTitle,  BorderLayout.CENTER);
+		chckbxEnregistrerLesRsultats.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		panelSubTitle.add(chckbxEnregistrerLesRsultats, BorderLayout.SOUTH);
 		
 		panelForm.add(labelText, BorderLayout.WEST);
 		panelForm.add(spinner);
@@ -61,7 +82,7 @@ public class UI extends JFrame {
 		panelProgressBar.setLayout(new BorderLayout(5, 0));
 		panelProgressBar.add(progressBar);
 		panelCenter.add(panelProgressBar);
-		panelBottom.setBorder(new EmptyBorder(10, 10, 0, 10));
+		panelBottom.setBorder(new EmptyBorder(10, 10, 10, 10));
 		
 		panelBottom.setLayout(new BorderLayout(5, 0));
 		panelBottom.add(labelResult, BorderLayout.NORTH);
@@ -69,6 +90,24 @@ public class UI extends JFrame {
 		panelTop.add(panelCenter, BorderLayout.SOUTH);
 		getContentPane().add(panelTop, BorderLayout.NORTH);
 		getContentPane().add(panelBottom, BorderLayout.CENTER);
+		
+
+		
+		JPanel panelScroll = new JPanel();
+		panelScroll.setBorder(new EmptyBorder(10, 0, 0, 0));
+		panelScroll.setLayout(new BorderLayout(0, 0));
+
+		JTextArea textResults = new JTextArea(16, 58);
+		textResults.setText("totototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\ntotototototototototototo\n");
+		textResults.setEditable(false);
+		JScrollPane scroll = new JScrollPane(textResults);
+		scroll.setViewportBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+	    scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+		panelScroll.add(scroll);
+		
+		
+		panelBottom.add(panelScroll);
 		//this.add(panelText);
 	}
 

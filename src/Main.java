@@ -30,7 +30,7 @@ public class Main {
 		UI ui = new UI();
 		ui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ui.pack();
-		ui.setSize(500, 400);
+		ui.setSize(500, 600);
 		ui.setVisible(true);
 		
 		
