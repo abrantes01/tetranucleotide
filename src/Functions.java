@@ -126,7 +126,7 @@ public class Functions {
 
 		FileReader input;
 		try{
-			input = new FileReader("S256.txt");
+			input = new FileReader("S126.txt");
 		}
 		catch (FileNotFoundException e){
 			System.out.println("Error while opening file");
@@ -149,40 +149,51 @@ public class Functions {
 	
 	public static void compteur(DefaultMutableTreeNode arbre, int l, ArrayList<String> conversion) {
 		int debut =0;
+		String virgule = new String();
 		if (l==0) {
 			if(isValid(arbre.toString(),conversion)) {
 				COMPTEUR_GLOBAL = COMPTEUR_GLOBAL.add(BigInteger.ONE);
-				/*String[] indexesTab = arbre.toString().split(",");
+				String[] indexesTab = arbre.toString().split(",");
+				//System.out.print(arbre.toString()+" , ");
 				ArrayList<String> tetraList = new ArrayList<String>();
 				for(String s : indexesTab){
-					System.out.print(conversion.get(Integer.parseInt(s))+' ');
+					if ((Integer.parseInt(s))>0) {
+						System.out.print(conversion.get(Integer.parseInt(s))+' ');
+					}
+					else {
+						System.out.print(complementary(conversion.get(0-Integer.parseInt(s)))+' ');
+					}
+					
+					//System.out.print(s+' ');
 				}
-				System.out.print(",");*/
+				System.out.print(",");
 			}
 		}
 		else {
+			if (l==1) {
+				virgule = "";
+			}
+			else {
+				virgule=",";
+			}
 			String[] indexesTab = arbre.toString().split(",");
 			String tmp = indexesTab[indexesTab.length-1]; 
+			//System.out.println(tmp);
 			if (arbre.toString().equals("")) {
 				debut = 0;
 			}
 			else {
 				debut = Integer.parseInt(tmp);
 			}
-			for (int i=debut+1; i<256; i++) {
+			for (int i=debut+1; i<126; i++) {
 				/*String[] indexesTab = (arbre.toString()+i).split(",");
 				ArrayList<String> tetraList = new ArrayList<String>();
 				for(String s : indexesTab){
 					System.out.print(conversion.get(Integer.parseInt(s))+' ');
 				}
 				System.out.println();*/
-				String virgule = new String();
-				if (l==1) {
-					virgule = "";
-				}
-				else {
-					virgule=",";
-				}
+				
+				
 				try{
 					if(!isCyclic(createGraph(arbre.toString()+i+virgule,conversion))) {
 						DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+i+virgule);
@@ -194,6 +205,14 @@ public class Functions {
 				catch(Exception e){
 					//System.out.println("Loops dedans putain");
 				}
+			}
+			if(!isAutocomplementary(conversion.get(Integer.parseInt(tmp)))) {
+				if(!isCyclic(createGraph(arbre.toString()+String.valueOf(0-Integer.parseInt(tmp))+virgule,conversion))) {
+					DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+String.valueOf(0-Integer.parseInt(tmp))+virgule);
+					arbre.add(node);
+					compteur(node, l-1, conversion);
+				}
+			}
 			}
 		}
 	}
@@ -209,7 +228,7 @@ public class Functions {
 	public static DefaultMutableTreeNode remplir_aux(DefaultMutableTreeNode root, int l){
 		FileReader input;
 		try{
-			input = new FileReader("S256.txt");
+			input = new FileReader("S126.txt");
 		}
 		catch (FileNotFoundException e){
 			System.out.println("Error while opening file");
@@ -310,8 +329,14 @@ public class Functions {
 		SimpleDirectedGraph<String, DefaultEdge> g =
 				new SimpleDirectedGraph<String, DefaultEdge>(DefaultEdge.class);
 		String[] indexesTab = indexes.split(",");
+		String tetraString = new String();
 		for (String s: indexesTab) {
-			String tetraString = conversion.get(Integer.parseInt(s));
+			if(Integer.parseInt(s)<0) {
+				tetraString = complementary(conversion.get(Integer.parseInt(String.valueOf(0-Integer.parseInt(s)))));
+			}
+			else {
+				tetraString = conversion.get(Integer.parseInt(s));
+			}
 			String s1 = new String();
 			String s2 = new String();
 
@@ -335,27 +360,41 @@ public class Functions {
 		if (indexes.equals("")){
 			System.out.println("Salut");
 		}
+		//System.out.print(indexes+" ");
 		/*if(isCyclic(createGraph(indexes,conversion))) {
 			//System.out.println("C'est cyclique");
 			res = false;
 		}*/
 		//else{
-			String[] indexesTab = indexes.split(",");
-			ArrayList<String> tetraList = new ArrayList<String>();
-			for(String s : indexesTab){
+		String[] indexesTab = indexes.split(",");
+		ArrayList<String> tetraList = new ArrayList<String>();
+		for(String s : indexesTab){
+			//System.out.print(s+' ');
+			if ((Integer.parseInt(s))>0) {
 				tetraList.add(conversion.get(Integer.parseInt(s)));
-			}/*
+			}
+			else {
+				tetraList.add(complementary(conversion.get(0-Integer.parseInt(s))));
+
+			}
+			
+		}
+		//System.out.println();
+		/*
 			ArrayList<String> tetraListComp = new ArrayList<String>();
 
 			for(String ts : tetraList){
 				tetraListComp.add(complementary(ts));
 			}
 			if(!tetraList.containsAll(tetraListComp)) res = false;*/
-			for(int i = 0; i < tetraList.size() && res;i++){
-	            String tetranucleotide = tetraList.get(i);
-	            res = tetraList.contains(complementary(tetranucleotide));
-	        }
+		for(int i = 0; i < tetraList.size() && res;i++){
+			String tetranucleotide = tetraList.get(i);
+	        res = tetraList.contains(complementary(tetranucleotide));
+	        //System.out.print(tetranucleotide+' ');
+	    }
 		//}
+		//System.out.print(res+" ");
+		//System.out.print(" ; ");
 
 		return res;
 	}
