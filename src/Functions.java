@@ -152,13 +152,13 @@ public class Functions {
 
 	
 	public static void compteur(DefaultMutableTreeNode arbre, int l, ArrayList<String> conversion) {
-		int debut =0;
+		int debut = 0;
 		String virgule = new String();
 		String tmp = new String("");
-		int index=0;
-		
-		if (l==0) {
-			if(isValid(arbre.toString(),conversion)) {
+		int index = 0;
+
+		if (l == 0) {
+			if (isValid(arbre.toString(), conversion)) {
 				COMPTEUR_GLOBAL = COMPTEUR_GLOBAL.add(BigInteger.ONE);
 				/*String[] indexesTab = arbre.toString().split(",");
 				//System.out.print(arbre.toString()+" , ");
@@ -175,63 +175,61 @@ public class Functions {
 				}
 				System.out.print(",");*/
 			}
-		}
-		else {
+		} else {
 			//System.out.println(arbre.toString());
-			if (l!=1) {
+			if (l != 1) {
 				virgule = ",";
 			}
 			/*else {
 				virgule=",";
 			}*/
 			String[] indexesTab = arbre.toString().split(",");
-			
-			tmp = indexesTab[indexesTab.length-1]; 
-			
-			
+
+			tmp = indexesTab[indexesTab.length - 1];
+
+
 			//System.out.println(tmp);
 			if (arbre.toString().equals("")) {
 				debut = 0;
-			}
-			else {
+			} else {
 				debut = Integer.parseInt(tmp);
 			}
-			for (int i=debut+1; i<126; i++) {
+			for (int i = debut + 1; i < 126; i++) {
 				/*String[] indexesTab = (arbre.toString()+i).split(",");
 				ArrayList<String> tetraList = new ArrayList<String>();
 				for(String s : indexesTab){
 					System.out.print(conversion.get(Integer.parseInt(s))+' ');
 				}
 				System.out.println();*/
-				
-				
-				try{
+
+
+				try {
 					//if (i!=Integer.parseInt(tmp)) {
-						if(!isCyclic(createGraph(arbre.toString()+i+virgule,conversion))) {
-							DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+i+virgule);
-							arbre.add(node);
-							compteur(node, l-1,conversion);
-							//System.out.println("UN DANS LE ELSE");
-						}
+					if (!isCyclic(createGraph(arbre.toString() + i + virgule, conversion))) {
+						DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString() + i + virgule);
+						arbre.add(node);
+						compteur(node, l - 1, conversion);
+						//System.out.println("UN DANS LE ELSE");
+					}
 					//}
-				}
-				catch(Exception e){
+				} catch (Exception e) {
 					//System.out.println("Loops dedans putain");
 				}
 			}
 			//System.out.println(tmp.getClass().getName());
 			//System.out.println("a : "+arbre.toString());
 			//System.out.println("a: "+tmp);
-			if(arbre.toString().length()!=0) {
-				if(!isAutocomplementary(conversion.get(Integer.parseInt(tmp)))) {
-					if(!isCyclic(createGraph(arbre.toString()+String.valueOf(0-Integer.parseInt(tmp))+virgule,conversion))) {
-						DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString()+String.valueOf(0-Integer.parseInt(tmp))+virgule);
+			if (arbre.toString().length() != 0) {
+				if (!isAutocomplementary(conversion.get(Integer.parseInt(tmp)))) {
+					if (!isCyclic(createGraph(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule, conversion))) {
+						DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule);
 						arbre.add(node);
-						compteur(node, l-1, conversion);
+						compteur(node, l - 1, conversion);
 					}
 				}
 			}
 		}
+	}
 
 
 	public static DefaultMutableTreeNode remplir(DefaultMutableTreeNode root, int l){
