@@ -192,9 +192,14 @@ public class Functions {
 			if (arbre.toString().equals("")) {
 				debut = 0;
 			} else {
-				debut = Integer.parseInt(tmp);
+				if (Integer.parseInt(tmp)<0) {
+					debut = Integer.parseInt(indexesTab[indexesTab.length-2])+1;
+				}
+				else {
+					debut = Integer.parseInt(tmp);
+				}
 			}
-			for (int i = debut + 1; i < 126; i++) {
+			for (int i = debut + 1; i <= 126; i++) {
 				/*String[] indexesTab = (arbre.toString()+i).split(",");
 				ArrayList<String> tetraList = new ArrayList<String>();
 				for(String s : indexesTab){
