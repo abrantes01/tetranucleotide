@@ -134,9 +134,12 @@ public class Functions {
 		}
 		BufferedReader bufRead = new BufferedReader(input);
 		String myLine = null;
+		int i = 1;
+		array.add(null);
 		try {
 			while ((myLine = bufRead.readLine()) != null) {
-				array.add(myLine);
+				array.add(i,myLine);
+				i++;
 			}
 		}
 		catch (IOException e) {
@@ -215,7 +218,7 @@ public class Functions {
 			}
 			}
 		}
-	}
+
 
 	public static DefaultMutableTreeNode remplir(DefaultMutableTreeNode root, int l){
 		if (l == 0) return root;
