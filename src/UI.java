@@ -3,7 +3,17 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,6 +36,10 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
+
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+
 import javax.swing.JCheckBox;
 
 public class UI extends JFrame {
@@ -109,6 +123,16 @@ public class UI extends JFrame {
 		
 		panelBottom.add(panelScroll);
 		//this.add(panelText);
+		
+		// Lecture du son modem.mp3
+		try {
+			InputStream in = new FileInputStream("modem.wav");
+			AudioStream as = new AudioStream(in);         
+			AudioPlayer.player.start(as);            
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
 	}
 
 }
