@@ -127,7 +127,7 @@ public class Functions {
 
 		FileReader input;
 		try{
-			input = new FileReader("S126.txt");
+			input = new FileReader("S256.txt");
 		}
 		catch (FileNotFoundException e){
 			System.out.println("Error while opening file");
@@ -199,7 +199,7 @@ public class Functions {
 					debut = Integer.parseInt(tmp);
 				}
 			}
-			for (int i = debut + 1; i <= 126; i++) {
+			for (int i = debut + 1; i <= 256; i++) {
 				/*String[] indexesTab = (arbre.toString()+i).split(",");
 				ArrayList<String> tetraList = new ArrayList<String>();
 				for(String s : indexesTab){
@@ -224,7 +224,7 @@ public class Functions {
 			//System.out.println(tmp.getClass().getName());
 			//System.out.println("a : "+arbre.toString());
 			//System.out.println("a: "+tmp);
-			if (arbre.toString().length() != 0) {
+			/*if (arbre.toString().length() != 0) {
 				if (!isAutocomplementary(conversion.get(Integer.parseInt(tmp)))) {
 					if (!isCyclic(createGraph(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule, conversion))) {
 						DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule);
@@ -232,7 +232,7 @@ public class Functions {
 						compteur(node, l - 1, conversion);
 					}
 				}
-			}
+			}*/
 		}
 	}
 
@@ -248,7 +248,7 @@ public class Functions {
 	public static DefaultMutableTreeNode remplir_aux(DefaultMutableTreeNode root, int l){
 		FileReader input;
 		try{
-			input = new FileReader("S126.txt");
+			input = new FileReader("S256.txt");
 		}
 		catch (FileNotFoundException e){
 			System.out.println("Error while opening file");
