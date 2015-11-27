@@ -127,7 +127,7 @@ public class Functions {
 
 		FileReader input;
 		try{
-			input = new FileReader("S126.txt");
+			input = new FileReader("S256.txt");
 		}
 		catch (FileNotFoundException e){
 			System.out.println("Error while opening file");
@@ -160,7 +160,7 @@ public class Functions {
 		if (l == 0) {
 			if (isValid(arbre.toString(), conversion)) {
 				COMPTEUR_GLOBAL = COMPTEUR_GLOBAL.add(BigInteger.ONE);
-				/*String[] indexesTab = arbre.toString().split(",");
+				String[] indexesTab = arbre.toString().split(",");
 				//System.out.print(arbre.toString()+" , ");
 				ArrayList<String> tetraList = new ArrayList<String>();
 				for(String s : indexesTab){
@@ -173,7 +173,7 @@ public class Functions {
 					
 					//System.out.print(s+' ');
 				}
-				System.out.print(",");*/
+				System.out.print(",");
 			}
 		} else {
 			//System.out.println(arbre.toString());
@@ -199,7 +199,7 @@ public class Functions {
 					debut = Integer.parseInt(tmp);
 				}
 			}
-			for (int i = debut + 1; i <= 126; i++) {
+			for (int i = debut + 1; i <= 256; i++) {
 				/*String[] indexesTab = (arbre.toString()+i).split(",");
 				ArrayList<String> tetraList = new ArrayList<String>();
 				for(String s : indexesTab){
@@ -248,7 +248,7 @@ public class Functions {
 	public static DefaultMutableTreeNode remplir_aux(DefaultMutableTreeNode root, int l){
 		FileReader input;
 		try{
-			input = new FileReader("S126.txt");
+			input = new FileReader("S256.txt");
 		}
 		catch (FileNotFoundException e){
 			System.out.println("Error while opening file");
