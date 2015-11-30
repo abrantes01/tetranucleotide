@@ -155,6 +155,7 @@ public class Functions {
 		int debut = 0;
 		String virgule = new String();
 		String tmp = new String("");
+		String tmp2 = new String("");
 		int index = 0;
 
 		if (l == 0) {
@@ -224,6 +225,7 @@ public class Functions {
 			//System.out.println(tmp.getClass().getName());
 			//System.out.println("a : "+arbre.toString());
 			//System.out.println("a: "+tmp);
+<<<<<<< HEAD
 			/*if (arbre.toString().length() != 0) {
 				if (!isAutocomplementary(conversion.get(Integer.parseInt(tmp)))) {
 					if (!isCyclic(createGraph(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule, conversion))) {
@@ -233,6 +235,21 @@ public class Functions {
 					}
 				}
 			}*/
+=======
+			if (arbre.toString().length() != 0) {
+				for (int j = Integer.parseInt(tmp)-1; j<indexesTab.length;j++) {
+					tmp2 = indexesTab[indexesTab.length - j];
+					if (!isAutocomplementary(conversion.get(Integer.parseInt(tmp2)))) {
+						if (!isCyclic(createGraph(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp2)) + virgule, conversion))) {
+							DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp2)) + virgule);
+							arbre.add(node);
+							compteur(node, l - 1, conversion);
+						}
+					}
+				}
+				
+			}
+>>>>>>> 0f6effeca1691badcdeec30db5c53dad80980ccf
 		}
 	}
 
