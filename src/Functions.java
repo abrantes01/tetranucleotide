@@ -161,7 +161,7 @@ public class Functions {
 		if (l == 0) {
 			if (isValid(arbre.toString(), conversion)) {
 				COMPTEUR_GLOBAL = COMPTEUR_GLOBAL.add(BigInteger.ONE);
-				String[] indexesTab = arbre.toString().split(",");
+				/*String[] indexesTab = arbre.toString().split(",");
 				//System.out.print(arbre.toString()+" , ");
 				ArrayList<String> tetraList = new ArrayList<String>();
 				for(String s : indexesTab){
@@ -174,7 +174,7 @@ public class Functions {
 					
 					//System.out.print(s+' ');
 				}
-				System.out.print(",");
+				System.out.print(",");*/
 			}
 		} else {
 			//System.out.println(arbre.toString());
