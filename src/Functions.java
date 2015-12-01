@@ -4,7 +4,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Enumeration;
 
 import org.jgrapht.DirectedGraph;
@@ -69,6 +68,12 @@ public class Functions {
 			}
 		}
         catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        try {
+			bufRead.close();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -147,6 +152,12 @@ public class Functions {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		try {
+			bufRead.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return array;
 	}
 
@@ -217,6 +228,7 @@ public class Functions {
 						compteur(node, l - 1, conversion);
 						//System.out.println("UN DANS LE ELSE");
 					}
+
 					//}
 				} catch (Exception e) {
 					//System.out.println("Loops dedans putain");
@@ -233,6 +245,9 @@ public class Functions {
 							DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule);
 							arbre.add(node);
 							compteur(node, l - 1, conversion);
+						}
+						else{
+							//arbre=null;
 						}
 					}
 					/*tmp2 = indexesTab[indexesTab.length - 2];
@@ -285,6 +300,12 @@ public class Functions {
 
 		for (Enumeration e = root.children(); e.hasMoreElements();){
 			remplir((DefaultMutableTreeNode) e.nextElement(),l-1);
+		}
+		try {
+			bufRead.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return root;
 
