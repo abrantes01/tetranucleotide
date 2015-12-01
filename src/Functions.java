@@ -225,17 +225,6 @@ public class Functions {
 			//System.out.println(tmp.getClass().getName());
 			//System.out.println("a : "+arbre.toString());
 			//System.out.println("a: "+tmp);
-<<<<<<< HEAD
-			/*if (arbre.toString().length() != 0) {
-				if (!isAutocomplementary(conversion.get(Integer.parseInt(tmp)))) {
-					if (!isCyclic(createGraph(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule, conversion))) {
-						DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule);
-						arbre.add(node);
-						compteur(node, l - 1, conversion);
-					}
-				}
-			}*/
-=======
 			if (arbre.toString().length() != 0) {
 				for (int j = Integer.parseInt(tmp)-1; j<indexesTab.length;j++) {
 					tmp2 = indexesTab[indexesTab.length - j];
@@ -249,7 +238,6 @@ public class Functions {
 				}
 				
 			}
->>>>>>> 0f6effeca1691badcdeec30db5c53dad80980ccf
 		}
 	}
 
