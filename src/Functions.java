@@ -127,7 +127,7 @@ public class Functions {
 
 		FileReader input;
 		try{
-			input = new FileReader("S256.txt");
+			input = new FileReader("S126.txt");
 		}
 		catch (FileNotFoundException e){
 			System.out.println("Error while opening file");
@@ -194,13 +194,13 @@ public class Functions {
 				debut = 0;
 			} else {
 				if (Integer.parseInt(tmp)<0) {
-					debut = Integer.parseInt(indexesTab[indexesTab.length-2])+1;
+					debut = Integer.parseInt(indexesTab[indexesTab.length-2]);
 				}
 				else {
 					debut = Integer.parseInt(tmp);
 				}
 			}
-			for (int i = debut + 1; i <= 256; i++) {
+			for (int i = debut + 1; i <= 126; i++) {
 				/*String[] indexesTab = (arbre.toString()+i).split(",");
 				ArrayList<String> tetraList = new ArrayList<String>();
 				for(String s : indexesTab){
@@ -226,16 +226,25 @@ public class Functions {
 			//System.out.println("a : "+arbre.toString());
 			//System.out.println("a: "+tmp);
 			if (arbre.toString().length() != 0) {
-				for (int j = Integer.parseInt(tmp)-1; j<indexesTab.length;j++) {
-					tmp2 = indexesTab[indexesTab.length - j];
+				//for (int j = Integer.parseInt(tmp)-1; j<indexesTab.length;j++) {
+					//tmp2 = indexesTab[indexesTab.length - j];
+					if (!isAutocomplementary(conversion.get(Integer.parseInt(tmp)))) {
+						if (!isCyclic(createGraph(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule, conversion))) {
+							DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule);
+							arbre.add(node);
+							compteur(node, l - 1, conversion);
+						}
+					}
+					/*tmp2 = indexesTab[indexesTab.length - 2];
 					if (!isAutocomplementary(conversion.get(Integer.parseInt(tmp2)))) {
 						if (!isCyclic(createGraph(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp2)) + virgule, conversion))) {
 							DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp2)) + virgule);
 							arbre.add(node);
 							compteur(node, l - 1, conversion);
 						}
-					}
-				}
+					}*/
+					
+				//}
 				
 			}
 		}
@@ -253,7 +262,7 @@ public class Functions {
 	public static DefaultMutableTreeNode remplir_aux(DefaultMutableTreeNode root, int l){
 		FileReader input;
 		try{
-			input = new FileReader("S256.txt");
+			input = new FileReader("S126.txt");
 		}
 		catch (FileNotFoundException e){
 			System.out.println("Error while opening file");

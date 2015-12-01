@@ -64,7 +64,7 @@ public class Main {
             //System.out.println(i+" : "+array.get(i));
         }
         System.out.println("debut");
-        Functions.compteur(new DefaultMutableTreeNode(),4,array);
+        Functions.compteur(new DefaultMutableTreeNode(),3,array);
         System.out.println();
         System.out.println(Functions.COMPTEUR_GLOBAL);
         //DirectedGraph<String, DefaultEdge> g = Functions.createGraph("1,125,37,2,9,45,120", array);
