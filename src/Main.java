@@ -35,7 +35,7 @@ public class Main {
 		
 		
 		 //String code = "{AATG,AGTT,GTGT,GTTT}";
-        DirectedGraph<String, DefaultEdge> hrefGraph = Functions.createHrefGraph("test.txt");
+        //DirectedGraph<String, DefaultEdge> hrefGraph = Functions.createHrefGraph("test.txt");
         //System.out.println(Functions.isCyclic(hrefGraph));
         
          //code pour générer les fichiers textes
@@ -58,7 +58,7 @@ public class Main {
         //Functions.getL1("S12.txt");
         //Functions.createTree("S126.txt");
         //DefaultMutableTreeNode arbre = Functions.remplir(new DefaultMutableTreeNode(),3);
-        ArrayList<String> array = Functions.arrayTetra126();
+        /*ArrayList<String> array = Functions.arrayTetra126();
         for(int i = 0 ; i < array.size() ; i++)
         {
             //System.out.println(i+" : "+array.get(i));
@@ -66,15 +66,12 @@ public class Main {
         System.out.println("debut");
         Functions.compteur(new DefaultMutableTreeNode(),3,array);
         System.out.println();
-        System.out.println(Functions.COMPTEUR_GLOBAL);
+        System.out.println(Functions.COMPTEUR_GLOBAL);*/
         //DirectedGraph<String, DefaultEdge> g = Functions.createGraph("1,125,37,2,9,45,120", array);
         //System.out.println(g.toString());
         //System.out.println(arbre.getDepth());
         //Functions.parcourir(arbre);
 
-        //visualization(hrefGraph);
-        //System.out.println(complementary("AACT"));
-        //System.out.println(Functions.isAutocomplementary("AACT"));
 	}
 	
 	public static void visualization(DirectedGraph<String, DefaultEdge> g){
