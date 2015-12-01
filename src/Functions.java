@@ -153,10 +153,10 @@ public class Functions {
 	
 	public static void compteur(DefaultMutableTreeNode arbre, int l, ArrayList<String> conversion) {
 		int debut = 0;
-		String virgule = new String();
-		String tmp = new String("");
-		String tmp2 = new String("");
-		int index = 0;
+		String virgule = "";
+		String tmp = "";
+		/*String tmp2 = new String("");
+		int index = 0;*/
 
 		if (l == 0) {
 			if (isValid(arbre.toString(), conversion)) {

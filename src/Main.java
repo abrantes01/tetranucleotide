@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.net.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,8 +24,17 @@ import org.jgrapht.graph.*;
 public class Main {
 
 	public static void main(String[] args) throws UnsupportedLookAndFeelException {
-		
-		
+		/*System.out.println("TEST THREAD");
+		ArrayList<String> array = Functions.arrayTetra126();
+		BigInteger res_t = new BigInteger("0");
+		Thread t = new Test(res_t,new DefaultMutableTreeNode(),2,array);
+		t.start();
+        try {
+            t.join();
+        } catch(InterruptedException e) {};
+        System.out.println("Resultat = "+res_t.toString());
+        */
+        
 		// Lauching user interface
 		UIManager.setLookAndFeel(new MetalLookAndFeel()); // For MAC users
 		UI ui = new UI();
