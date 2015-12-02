@@ -21,13 +21,12 @@ public class UIListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
-        DirectedGraph<String, DefaultEdge> hrefGraph = Functions.createHrefGraph("test.txt");
+        //DirectedGraph<String, DefaultEdge> hrefGraph = Functions.createHrefGraph("test.txt");
         ArrayList<String> array = Functions.arrayTetra126();
         
         int n = (Integer) ui.model.getValue();
-		ui.textResults.setText("Starting with n = ");
-		
-		System.out.println(ui.textResults.getText());
+		ui.textResults.setText("Starting with l = "+ n);
+		//System.out.println(ui.textResults.getText());
 
 		// Lecture du son modem.mp3
 		try {
@@ -40,8 +39,7 @@ public class UIListener implements ActionListener {
 		}
 		
         Functions.compteur(new DefaultMutableTreeNode(), n, array);
-        
-        //ui.textResults.setText(ui.textResults.getText() + "\n" + Functions.COMPTEUR_GLOBAL);
+        ui.jl_res.setText("Résultat : "+ Functions.COMPTEUR_GLOBAL);
         //System.out.println(Functions.COMPTEUR_GLOBAL);
 		
 	}

@@ -25,7 +25,7 @@ public class UI extends JFrame {
 	public JLabel labelTitle = new JLabel("Projet Algorithme de recherche", SwingConstants.CENTER);
 	public JLabel labelAuthors = new JLabel("Abrantes - Bonnet - Lopez - Metzger - Nominé - Peuckert", JLabel.CENTER);
 	public JLabel labelText = new JLabel("Entrez la taille du code (1-60) :");
-	public JLabel labelResult = new JLabel("Résultats :");
+	//public JLabel labelResult = new JLabel("Résultats :");
 
 	SpinnerModel model = new SpinnerNumberModel(3, 1, 60, 1);
 	JSpinner spinner = new JSpinner(model);
@@ -41,6 +41,7 @@ public class UI extends JFrame {
 	public JPanel panelResults = new JPanel();
 	public JCheckBox chckbxEnregistrerLesRsultats = new JCheckBox("Enregistrer les résultats (results.txt)");
 	public JLabel textResults = new JLabel();
+	public JLabel jl_res = new JLabel();
 	
 	
 	public UI() {
@@ -83,13 +84,15 @@ public class UI extends JFrame {
 		panelBottom.setBorder(new EmptyBorder(10, 10, 10, 10));
 		
 		panelBottom.setLayout(new BorderLayout(5, 0));
-		panelBottom.add(labelResult, BorderLayout.NORTH);
+		panelBottom.add(textResults, BorderLayout.NORTH);
 		
 		panelTop.add(panelCenter, BorderLayout.SOUTH);
 		getContentPane().add(panelTop, BorderLayout.NORTH);
 		getContentPane().add(panelBottom, BorderLayout.CENTER);
 		
-		panelBottom.add(textResults, BorderLayout.WEST);
+		//panelBottom.add(textResults, BorderLayout.WEST);
+		panelBottom.add(jl_res, BorderLayout.WEST);
+
 		//this.add(panelText);
 	}
 
