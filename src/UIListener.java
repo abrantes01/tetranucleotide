@@ -51,6 +51,7 @@ public class UIListener implements ActionListener {
 				e1.printStackTrace();
 			}
         }
+        System.out.println("Pour i = "+ n + " res = "+res.total());
         ui.jl_res.setText("Résultat : "+ res.total().toString());
 		/*Functions.compteur(new DefaultMutableTreeNode(), n, array);
         ui.jl_res.setText("Résultat : "+ Functions.COMPTEUR_GLOBAL);*/

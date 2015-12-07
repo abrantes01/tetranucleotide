@@ -92,7 +92,8 @@ public class Main {
 		JFrame frame = new JFrame();
 	    frame.getContentPane().add(graph);
 	    frame.setTitle("JGraphT Adapter to JGraph Demo");
-	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    //A commenter pour kevin
+	  //  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.pack();
 	    frame.setVisible(true);
 		
