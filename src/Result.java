@@ -19,7 +19,7 @@ public class Result {
 		return this.bob[i];
 	}
 	
-	public void set(int i) {
+	public void incremente(int i) {
 		//System.out.println(this.bob[i] +" bob ");
 		this.bob[i] = this.bob[i].add(BigInteger.ONE);
 		//System.out.println(this.bob[i] + "bob2 ");
