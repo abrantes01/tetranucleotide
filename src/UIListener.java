@@ -20,6 +20,7 @@ public class UIListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		res = new Result();
 		//
 		// TODO Auto-generated method stub
 		
