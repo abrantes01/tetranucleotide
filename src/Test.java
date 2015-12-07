@@ -28,7 +28,7 @@ public class Test extends Thread {
 		String tmp = "";
 		if (l == 0) {
 			if (Functions.isValid(arbre.toString(), conversion)) {
-				Functions.COMPTEUR_GLOBAL = Functions.COMPTEUR_GLOBAL.add(BigInteger.ONE);
+				//Functions.COMPTEUR_GLOBAL = Functions.COMPTEUR_GLOBAL.add(BigInteger.ONE);
 				//System.out.println("Thread : " +this.id);
 				UIListener.res.set(this.id-1); 
 				/*String[] indexesTab = arbre.toString().split(",");
@@ -61,7 +61,7 @@ public class Test extends Thread {
 					if (!Functions.isCyclic(Functions.createGraph(arbre.toString() + i + virgule, conversion))) {
 						DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString() + i + virgule);
 						arbre.add(node);
-						compteur(node, l - 1, conversion);
+						compteur(node, l - 1, conversion, this.id-1);
 					}
 				} catch (Exception e) {
 				}
@@ -71,7 +71,7 @@ public class Test extends Thread {
 					if (!Functions.isCyclic(Functions.createGraph(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule, conversion))) {
 						DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule);
 						arbre.add(node);
-						compteur(node, l - 1, conversion);
+						compteur(node, l - 1, conversion, this.id-1);
 					}
 				}	
 			}
@@ -101,14 +101,14 @@ public class Test extends Thread {
 		
 	}
 
-    public static void compteur(DefaultMutableTreeNode arbre, int l, ArrayList<String> conversion) {
+    public static void compteur(DefaultMutableTreeNode arbre, int l, ArrayList<String> conversion,int id_thread) {
     	int debut = 0;
 		String virgule = "";
 		String tmp = "";
 		if (l == 0) {
 			if (Functions.isValid(arbre.toString(), conversion)) {
-				Functions.COMPTEUR_GLOBAL = Functions.COMPTEUR_GLOBAL.add(BigInteger.ONE);
-				//UIListener.res.set(this.id-1);
+				//Functions.COMPTEUR_GLOBAL = Functions.COMPTEUR_GLOBAL.add(BigInteger.ONE);
+				UIListener.res.set(id_thread);
 				/*String[] indexesTab = arbre.toString().split(",");
 				ArrayList<String> tetraList = new ArrayList<String>();
 				for(String s : indexesTab){
@@ -139,7 +139,7 @@ public class Test extends Thread {
 					if (!Functions.isCyclic(Functions.createGraph(arbre.toString() + i + virgule, conversion))) {
 						DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString() + i + virgule);
 						arbre.add(node);
-						compteur(node, l - 1, conversion);
+						compteur(node, l - 1, conversion, id_thread);
 					}
 				} catch (Exception e) {
 				}
@@ -149,7 +149,7 @@ public class Test extends Thread {
 					if (!Functions.isCyclic(Functions.createGraph(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule, conversion))) {
 						DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule);
 						arbre.add(node);
-						compteur(node, l - 1, conversion);
+						compteur(node, l - 1, conversion, id_thread);
 					}
 				}	
 			}

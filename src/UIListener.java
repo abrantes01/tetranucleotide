@@ -54,7 +54,7 @@ public class UIListener implements ActionListener {
 		/*Functions.compteur(new DefaultMutableTreeNode(), n, array);
         ui.jl_res.setText("Résultat : "+ Functions.COMPTEUR_GLOBAL);*/
       //  Functions.COMPTEUR_GLOBAL = new BigInteger("0");
-       System.out.println(Functions.COMPTEUR_GLOBAL);
+      // System.out.println(Functions.COMPTEUR_GLOBAL);
 		
 	}
 
