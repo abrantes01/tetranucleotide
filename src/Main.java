@@ -22,6 +22,7 @@ import org.jgrapht.ext.JGraphModelAdapter;
 import org.jgrapht.graph.*;
 
 public class Main {
+	public static ArrayList<Test> tests;
 
 	public static void main(String[] args) throws UnsupportedLookAndFeelException {
 		/*System.out.println("TEST THREAD");
@@ -36,6 +37,7 @@ public class Main {
         */
         
 		// Lauching user interface
+		tests = new ArrayList<Test>();
 		UIManager.setLookAndFeel(new MetalLookAndFeel()); // For MAC users
 		UI ui = new UI();
 		ui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

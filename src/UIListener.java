@@ -41,12 +41,20 @@ public class UIListener implements ActionListener {
 			System.out.println(ex);
 		}
 		
-        /*Test.compteur_aux(new DefaultMutableTreeNode(), n, array);
-        ui.jl_res.setText("Résultat : "+ res.total().toString());*/
-		Functions.compteur(new DefaultMutableTreeNode(), n, array);
-        ui.jl_res.setText("Résultat : "+ Functions.COMPTEUR_GLOBAL);
-        //Functions.COMPTEUR_GLOBAL = new BigInteger("0");
-        //System.out.println(Functions.COMPTEUR_GLOBAL);
+        Test.compteur_aux(new DefaultMutableTreeNode(), n, array);
+        for(Test t : Main.tests){
+        	try {
+				t.join();
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+        }
+        ui.jl_res.setText("Résultat : "+ res.total().toString());
+		/*Functions.compteur(new DefaultMutableTreeNode(), n, array);
+        ui.jl_res.setText("Résultat : "+ Functions.COMPTEUR_GLOBAL);*/
+      //  Functions.COMPTEUR_GLOBAL = new BigInteger("0");
+       System.out.println(Functions.COMPTEUR_GLOBAL);
 		
 	}
 

@@ -22,13 +22,14 @@ public class Test extends Thread {
 	
 	
 	public void run() {
-		System.out.println("coucou :" + this.id);
+		//System.out.println("coucou :" + this.id);
 		int debut = 0;
 		String virgule = "";
 		String tmp = "";
 		if (l == 0) {
 			if (Functions.isValid(arbre.toString(), conversion)) {
 				Functions.COMPTEUR_GLOBAL = Functions.COMPTEUR_GLOBAL.add(BigInteger.ONE);
+				System.out.println("Thread : " +this.id);
 				UIListener.res.set(this.id-1); 
 				/*String[] indexesTab = arbre.toString().split(",");
 				ArrayList<String> tetraList = new ArrayList<String>();
@@ -89,7 +90,9 @@ public class Test extends Thread {
 					if (!Functions.isCyclic(Functions.createGraph(arbre.toString() + i + ',', conversion))) {
 						DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString() + i +',');
 						arbre.add(node);
-						(new Test(node,l-1,conversion,i)).start();
+						//System.out.println("Coucou : " + Main.tests.size());
+						Main.tests.add(new Test(node,l-1,conversion,i));
+						Main.tests.get(Main.tests.size()-1).start();
 					}
 				} catch (Exception e) {
 				}
@@ -105,6 +108,7 @@ public class Test extends Thread {
 		if (l == 0) {
 			if (Functions.isValid(arbre.toString(), conversion)) {
 				Functions.COMPTEUR_GLOBAL = Functions.COMPTEUR_GLOBAL.add(BigInteger.ONE);
+				//UIListener.res.set(this.id-1);
 				/*String[] indexesTab = arbre.toString().split(",");
 				ArrayList<String> tetraList = new ArrayList<String>();
 				for(String s : indexesTab){
