@@ -145,13 +145,15 @@ public class Test extends Thread {
 				}
 			}
 			if (arbre.toString().length() != 0) {
-				if (!Functions.isAutocomplementary(conversion.get(Integer.parseInt(tmp)))) {
-					if (!Functions.isCyclic(Functions.createGraph(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule, conversion))) {
-						DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule);
-						arbre.add(node);
-						compteur(node, l - 1, conversion, id_thread);
+				if(Integer.parseInt(tmp)>=0){
+					if (!Functions.isAutocomplementary(conversion.get(Integer.parseInt(tmp)))) {
+						if (!Functions.isCyclic(Functions.createGraph(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule, conversion))) {
+							DefaultMutableTreeNode node = new DefaultMutableTreeNode(arbre.toString() + String.valueOf(0 - Integer.parseInt(tmp)) + virgule);
+							arbre.add(node);
+							compteur(node, l - 1, conversion, id_thread);
+						}
 					}
-				}	
+				}
 			}
 		}
         
