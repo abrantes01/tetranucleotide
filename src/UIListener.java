@@ -29,7 +29,7 @@ public class UIListener implements ActionListener {
        
         
         int n = (Integer) ui.model.getValue();
-		ui.textResults.setText("Starting with l = "+ n);
+		//ui.textResults.setText("Starting with l = "+ n);
 		//System.out.println(ui.textResults.getText());
 
 		// Lecture du son modem.mp3

@@ -31,23 +31,22 @@ public class UI extends JFrame {
 	JSpinner spinner = new JSpinner(model);
 	
 	public JButton buttonStart = new JButton("Commencer !");
-	public JProgressBar progressBar = new JProgressBar();
 	
 	public JPanel panelTop = new JPanel();
 	public JPanel panelCenter = new JPanel();
 	public JPanel panelBottom = new JPanel();
 	public JPanel panelForm = new JPanel();
-	public JPanel panelProgressBar = new JPanel();
 	public JPanel panelResults = new JPanel();
 	public JCheckBox chckbxEnregistrerLesRsultats = new JCheckBox("Enregistrer les résultats (results.txt)");
-	public JLabel textResults = new JLabel();
+	//public JLabel textResults = new JLabel();
 	public JLabel jl_res = new JLabel();
 	
+	public JLabel jl_temps_ecoule = new JLabel("Temps écoulé");
 	
 	public UI() {
 		
 		UIListener listener = new UIListener(this);
-		
+		panelBottom.add(jl_temps_ecoule);
 		Font f = labelTitle.getFont();
 		labelTitle.setFont(new Font(f.getName(), Font.PLAIN, 2*f.getSize()));
 		panelTop.setBorder(new EmptyBorder(10, 5, 5, 5));
@@ -74,24 +73,16 @@ public class UI extends JFrame {
 		
 		panelCenter.setLayout(new BorderLayout(0, 0));
 		panelCenter.add(panelForm, BorderLayout.NORTH);
-		panelProgressBar.setBorder(new EmptyBorder(10, 10, 0, 10));
-
-		progressBar.setPreferredSize(new Dimension(0, 20));
-		
-		panelProgressBar.setLayout(new BorderLayout(5, 0));
-		panelProgressBar.add(progressBar);
-		panelCenter.add(panelProgressBar);
 		panelBottom.setBorder(new EmptyBorder(10, 10, 10, 10));
 		
 		panelBottom.setLayout(new BorderLayout(5, 0));
-		panelBottom.add(textResults, BorderLayout.NORTH);
-		
+		//panelBottom.add(textResults, BorderLayout.NORTH);
+		panelBottom.add(jl_temps_ecoule,BorderLayout.EAST);
+		panelBottom.add(jl_res, BorderLayout.WEST);
 		panelTop.add(panelCenter, BorderLayout.SOUTH);
 		getContentPane().add(panelTop, BorderLayout.NORTH);
 		getContentPane().add(panelBottom, BorderLayout.CENTER);
-		
 		//panelBottom.add(textResults, BorderLayout.WEST);
-		panelBottom.add(jl_res, BorderLayout.WEST);
 
 		//this.add(panelText);
 	}
